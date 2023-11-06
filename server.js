@@ -6,7 +6,8 @@ const port = 3000
 // Pug
 app.set('view engine', 'pug');
 app.set('views','./views');
-
+// Access to public folder
+app.use(express.static('public'));
 
 app.get('/', function(req, res){
     res.render('home');
@@ -24,7 +25,9 @@ app.get("/mission", (req, res) => {
 });
 
 app.get("/contact", (req, res) => {
-    res.render('contact');
+    res.render('contact',{ 
+        url:"https://www.thebridge.tech/"
+    });
 });
 
 
