@@ -8,29 +8,29 @@ app.set('view engine', 'pug');
 app.set('views','./views');
 
 
-app.get("/home", (req, res) => {
-    res.sendFile(path.join(dirname, "/index.html"));
-});
-
-app.get("/about", (req, res) => {
-    res.sendFile(path.join(dirname, "/about.html"));
-});
+app.get('/', function(req, res){
+    res.render('home');
+  });
+app.get('/about', function(req, res){
+    res.render('about');
+  });
 
 app.get("/location", (req, res) => {
-    res.sendFile(path.join(dirname, "/location.html"));
+    res.render('location');
 });
 
 app.get("/mission", (req, res) => {
-    res.sendFile(path.join(dirname, "/mission.html"));
+    res.render('mission');
 });
 
 app.get("/contact", (req, res) => {
-    res.sendFile(path.join(__dirname, "/contact.html"));
+    res.render('contact');
 });
 
 
-
-
+app.get("*",(req,res)=>{
+    res.status(404).send("Gatito triste - 404 not found");
+})
 
 
 
